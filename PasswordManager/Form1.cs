@@ -16,5 +16,25 @@ namespace PasswordManager
         {
             InitializeComponent();
         }
+
+        private void btn_buscar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_copiar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_actualizar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_eliminar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
