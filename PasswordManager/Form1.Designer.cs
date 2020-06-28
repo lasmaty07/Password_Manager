@@ -41,7 +41,7 @@ namespace PasswordManager
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();           
             this.SuspendLayout();
             // 
             // btn_buscar
@@ -175,7 +175,7 @@ namespace PasswordManager
 
         #endregion
 
-        private System.Windows.Forms.Button btn_buscar;
+        private Button btn_buscar;
         private Button btn_copiar;
         private Button btn_actualizar;
         private Button btn_eliminar;
