@@ -25,8 +25,10 @@ namespace PasswordManager
                 string name = this.textBox1.Text;
                 string user = this.textBox2.Text;
                 string env = this.textBox3.Text;
-                List<Aplicativo> apps = PasswordManager.AplicativoController.GetAplicativo(name,user,env);
+                List<Aplicativo> apps = PasswordManager.AplicativoController.GetAplicativo(name,user,env);               
                 this.appsDataGridView.DataSource = apps;
+                this.appsDataGridView.Columns["Id"].Visible = false;
+                //this.appsDataGridView.Columns["Password"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -38,7 +40,20 @@ namespace PasswordManager
         {
             try
             {
-                MessageBox.Show("Now working yet");
+                var password = "p@SSword";
+                //var strEncryptred = PasswordManager.AplicativoController.Encrypt(str, password);
+                if (appsDataGridView.SelectedCells.Count > 0)
+                {
+                    int selectedrowindex = appsDataGridView.SelectedCells[0].RowIndex;
+                    DataGridViewRow selectedRow = appsDataGridView.Rows[selectedrowindex];
+                    var strEncryptred = Convert.ToString(selectedRow.Cells["Password"].Value);
+                    var strDecrypted = PasswordManager.AplicativoController.Decrypt(strEncryptred, password);
+                    MessageBox.Show(strDecrypted);
+                }
+                else
+                {
+                    MessageBox.Show("No se selecciono ningun registro");
+                }
             }
             catch (Exception ex)
         {
@@ -50,6 +65,20 @@ namespace PasswordManager
         {
             try
             {
+                var password = "p@SSword";
+                //var strEncryptred = PasswordManager.AplicativoController.Encrypt(str, password);
+                if (appsDataGridView.SelectedCells.Count > 0)
+                {
+                    int selectedrowindex = appsDataGridView.SelectedCells[0].RowIndex;
+                    DataGridViewRow selectedRow = appsDataGridView.Rows[selectedrowindex];
+                    var strDecrypted = Convert.ToString(selectedRow.Cells["Password"].Value);
+                    var strEncryptred = PasswordManager.AplicativoController.Encrypt(strDecrypted, password);
+                    MessageBox.Show(strEncryptred);
+                }
+                else
+                {
+                    MessageBox.Show("No se selecciono ningun registro");
+                }
             }
             catch (Exception ex)
         {
@@ -61,6 +90,14 @@ namespace PasswordManager
         {
             try
             {
+                if (appsDataGridView.SelectedCells.Count > 0)
+                {
+
+                }
+                else
+                {
+                    MessageBox.Show("No se selecciono ningun registro");
+                }
             }
             catch (Exception ex)
             {

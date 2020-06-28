@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace PasswordManager
 {
@@ -146,14 +147,19 @@ namespace PasswordManager
             // datagridview
             //
             appsDataGridView.Name = "aplicativos";
-            appsDataGridView.Location = new System.Drawing.Point(12, 63);
-            appsDataGridView.Size = new System.Drawing.Size(485, 384);
+            appsDataGridView.Location = new Point(12, 63);
+            appsDataGridView.Size = new Size(485, 384);
             appsDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            appsDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             appsDataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             appsDataGridView.CellBorderStyle = DataGridViewCellBorderStyle.Single;
-            appsDataGridView.GridColor = System.Drawing.Color.Black;
-            appsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            appsDataGridView.GridColor = Color.Black;
+            //appsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             appsDataGridView.MultiSelect = false;
+            /*appsDataGridView.ColumnCount = 3;
+            appsDataGridView.Columns[0].Name = "Aplicativo";
+            appsDataGridView.Columns[1].Name = "Usuario";
+            appsDataGridView.Columns[2].Name = "Ambiente";*/
             // 
             // Form1
             // 
