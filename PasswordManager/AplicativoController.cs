@@ -8,18 +8,50 @@ using System.Text;
 namespace PasswordManager
 {
     class AplicativoController
-    {
+    {      
         public static List<Aplicativo> GetAplicativo(string name,string user,string env)
         {
-            using (var db = new DBContext())
+            List<Aplicativo> aplicativos = new List<Aplicativo> { } ;
+
+            // TO-DO refactoring de este codigo
+            if (name.Length != 0  && user.Length != 0 && env.Length != 0)
             {
-                List<Aplicativo> aplicativos = db.Aplicativos.Where(
-                                t => db.Aplicativos.All(
-                                    s => t.Name.ToLower().Contains(name)
-                                    )
-                                ).ToList();
-                return aplicativos;
+                using (var db = new DBContext())
+                {
+                    aplicativos = db.Aplicativos.Where(
+                                    t => db.Aplicativos.Any(s => t.Name.ToLower().Contains(name) &&
+                                                                 t.User.ToLower().Contains(user) &&
+                                                                 t.Env.ToLower().Contains(env))
+                                    ).ToList();
+                    
+                }
             }
+            else {
+                if (name.Length != 0 && user.Length == 0 && env.Length == 0)
+                {
+                    using (var db = new DBContext())
+                    {
+                        aplicativos = db.Aplicativos.Where(
+                                        t => db.Aplicativos.Any(s => t.Name.ToLower().Contains(name))
+                                        ).ToList();
+
+                    }
+                }
+                else {
+                    if (name.Length != 0 && user.Length != 0 && env.Length == 0) 
+                    {
+                        using (var db = new DBContext())
+                        {
+                            aplicativos = db.Aplicativos.Where(
+                                            t => db.Aplicativos.Any(s => t.Name.ToLower().Contains(name)) &&
+                                                                        t.User.ToLower().Contains(user)
+                                            ).ToList();
+
+                        }
+                    }
+                }
+            }
+            return aplicativos;
         }
     }
 }
