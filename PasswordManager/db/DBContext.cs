@@ -4,13 +4,14 @@ using System.Text;
 using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using PasswordManager.Model;
 
 namespace PasswordManager.db
 {
     public class DBContext : DbContext
     {
-        public DBContext(string nameOrConnectionString)
-            : base(nameOrConnectionString)
+        public DBContext()
+            : base(@"data source=.\db\pass_man.db;foreign keys=true")
         {
             Configure();
         }
@@ -20,6 +21,8 @@ namespace PasswordManager.db
         {
             Configure();
         }
+
+        public DbSet<Aplicativo> Aplicativos { get; set; }
 
         private void Configure()
         {

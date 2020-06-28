@@ -27,7 +27,7 @@ namespace PasswordManager
 
         private static void StartDemoUseFile()
         {
-            using (var context = new DBContext(@"data source=.\db\pass_man.db;foreign keys=true"))
+            using (var context = new DBContext())
             {
                 CreateAndSeedDatabase(context);
             }

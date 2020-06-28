@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PasswordManager.Model
 {
-    class Aplicativo
+    public class Aplicativo
     {
         public int Id { get; set; }
         public string Name { get; set; }
