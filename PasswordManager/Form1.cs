@@ -22,8 +22,12 @@ namespace PasswordManager
         {
             try 
             {
-                Aplicativo app = PasswordManager.AplicativoController.GetAplicativo();
-                this.textBox1.Text = app.Password.ToString();
+                string name = this.textBox1.Text;
+                Aplicativo app = PasswordManager.AplicativoController.GetAplicativo(name);
+                this.textBox1.Text = app.Name.ToString();
+                this.textBox2.Text = app.User.ToString();
+                this.textBox3.Text = app.Env.ToString();
+                this.textBox4.Text = app.Password.ToString();
             }
             catch (Exception ex)
             {
