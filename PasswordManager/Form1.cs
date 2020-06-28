@@ -52,7 +52,7 @@ namespace PasswordManager
                 }
                 else
                 {
-                    MessageBox.Show("No se selecciono ningun registro");
+                    MessageBox.Show("No se seleccionó ningun registro");
                 }
             }
             catch (Exception ex)
@@ -77,7 +77,7 @@ namespace PasswordManager
                 }
                 else
                 {
-                    MessageBox.Show("No se selecciono ningun registro");
+                    MessageBox.Show("No se seleccionó ningun registro");
                 }
             }
             catch (Exception ex)
@@ -96,7 +96,7 @@ namespace PasswordManager
                 }
                 else
                 {
-                    MessageBox.Show("No se selecciono ningun registro");
+                    MessageBox.Show("No se seleccionó ningun registro");
                 }
             }
             catch (Exception ex)
