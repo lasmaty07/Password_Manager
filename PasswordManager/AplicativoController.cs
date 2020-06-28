@@ -9,12 +9,12 @@ namespace PasswordManager
 {
     class AplicativoController
     {
-        public static Aplicativo GetAplicativo(string name)
+        public static List<Aplicativo> GetAplicativo(string name)
         {
             using (var db = new DBContext())
             {
                 List<Aplicativo> aplicativos = db.Aplicativos.Where(s => s.Name == name).ToList();
-                return aplicativos[0];
+                return aplicativos;
             }
         }
 

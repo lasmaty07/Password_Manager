@@ -37,18 +37,17 @@ namespace PasswordManager
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();           
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_buscar
             // 
-            this.btn_buscar.Location = new System.Drawing.Point(503, 12);
+            this.btn_buscar.Location = new System.Drawing.Point(330, 12);
             this.btn_buscar.Name = "btn_buscar";
-            this.btn_buscar.Size = new System.Drawing.Size(89, 34);
+            this.btn_buscar.Size = new System.Drawing.Size(89, 45);
             this.btn_buscar.TabIndex = 0;
             this.btn_buscar.Text = "Buscar";
             this.btn_buscar.UseVisualStyleBackColor = true;
@@ -56,7 +55,7 @@ namespace PasswordManager
             // 
             // btn_copiar
             // 
-            this.btn_copiar.Location = new System.Drawing.Point(503, 52);
+            this.btn_copiar.Location = new System.Drawing.Point(503, 63);
             this.btn_copiar.Name = "btn_copiar";
             this.btn_copiar.Size = new System.Drawing.Size(89, 34);
             this.btn_copiar.TabIndex = 0;
@@ -66,7 +65,7 @@ namespace PasswordManager
             // 
             // btn_actualizar
             // 
-            this.btn_actualizar.Location = new System.Drawing.Point(503, 92);
+            this.btn_actualizar.Location = new System.Drawing.Point(503, 103);
             this.btn_actualizar.Name = "btn_actualizar";
             this.btn_actualizar.Size = new System.Drawing.Size(89, 34);
             this.btn_actualizar.TabIndex = 0;
@@ -76,7 +75,7 @@ namespace PasswordManager
             // 
             // btn_eliminar
             // 
-            this.btn_eliminar.Location = new System.Drawing.Point(503, 132);
+            this.btn_eliminar.Location = new System.Drawing.Point(503, 143);
             this.btn_eliminar.Name = "btn_eliminar";
             this.btn_eliminar.Size = new System.Drawing.Size(89, 34);
             this.btn_eliminar.TabIndex = 0;
@@ -105,13 +104,6 @@ namespace PasswordManager
             this.textBox3.Size = new System.Drawing.Size(100, 23);
             this.textBox3.TabIndex = 1;
             // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(330, 34);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 23);
-            this.textBox4.TabIndex = 1;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -139,25 +131,39 @@ namespace PasswordManager
             this.label3.TabIndex = 2;
             this.label3.Text = "Ambiente";
             // 
-            // label4
+            // button1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(330, 12);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 15);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Password";
+            /*
+            this.button1.Location = new System.Drawing.Point(12, 63);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(485, 384);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Eliminar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btn_eliminar_Click);
+            this.Visible = false;*/
+            // 
+            // datagridview
+            //
+            appsDataGridView.Name = "aplicativos";
+            appsDataGridView.Location = new System.Drawing.Point(12, 63);
+            appsDataGridView.Size = new System.Drawing.Size(485, 384);
+            appsDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            appsDataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            appsDataGridView.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+            appsDataGridView.GridColor = System.Drawing.Color.Black;
+            appsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            appsDataGridView.MultiSelect = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(604, 459);
-            this.Controls.Add(this.label4);
+            //this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -165,6 +171,7 @@ namespace PasswordManager
             this.Controls.Add(this.btn_actualizar);
             this.Controls.Add(this.btn_copiar);
             this.Controls.Add(this.btn_buscar);
+            this.Controls.Add(this.appsDataGridView);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -182,11 +189,11 @@ namespace PasswordManager
         private TextBox textBox1;
         private TextBox textBox2;
         private TextBox textBox3;
-        private TextBox textBox4;
         private Label label1;
         private Label label2;
         private Label label3;
-        private Label label4;
+        private DataGridView appsDataGridView = new DataGridView();
+        private Button button1;
     }
 }
 

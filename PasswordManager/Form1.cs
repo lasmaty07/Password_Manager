@@ -17,17 +17,14 @@ namespace PasswordManager
         {
             InitializeComponent();
         }
-
+        
         private void btn_buscar_Click(object sender, EventArgs e)
         {
             try 
             {
                 string name = this.textBox1.Text;
-                Aplicativo app = PasswordManager.AplicativoController.GetAplicativo(name);
-                this.textBox1.Text = app.Name.ToString();
-                this.textBox2.Text = app.User.ToString();
-                this.textBox3.Text = app.Env.ToString();
-                this.textBox4.Text = app.Password.ToString();
+                List<Aplicativo> apps = PasswordManager.AplicativoController.GetAplicativo(name);
+                this.appsDataGridView.DataSource = apps;
             }
             catch (Exception ex)
             {
@@ -39,6 +36,10 @@ namespace PasswordManager
         {
             try
             {
+                using (var frm = new Form2())
+                {
+                    frm.ShowDialog();
+                }
             }
             catch (Exception ex)
         {
