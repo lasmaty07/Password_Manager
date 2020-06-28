@@ -23,7 +23,9 @@ namespace PasswordManager
             try 
             {
                 string name = this.textBox1.Text;
-                List<Aplicativo> apps = PasswordManager.AplicativoController.GetAplicativo(name);
+                string user = this.textBox2.Text;
+                string env = this.textBox3.Text;
+                List<Aplicativo> apps = PasswordManager.AplicativoController.GetAplicativo(name,user,env);
                 this.appsDataGridView.DataSource = apps;
             }
             catch (Exception ex)
@@ -36,10 +38,7 @@ namespace PasswordManager
         {
             try
             {
-                using (var frm = new Form2())
-                {
-                    frm.ShowDialog();
-                }
+                MessageBox.Show("Now working yet");
             }
             catch (Exception ex)
         {
