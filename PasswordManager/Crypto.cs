@@ -8,6 +8,8 @@ namespace PasswordManager
 {
     class Crypto
     {
+        public static string admin_pass;
+
         public static string Encrypt(string plainText, string password)
         {
             if (plainText == null)
