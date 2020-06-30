@@ -56,6 +56,14 @@ namespace PasswordManager
                 Env = "Prod",
                 Password = "testpasswordprod"
             });
+            context.Set<Aplicativo>().Add(new Aplicativo
+            {
+                Id = 3,
+                Name = "kibana",
+                User = "L0690228",
+                Env = "Prod",
+                Password = "testpasswordprod"
+            });
 
             context.SaveChanges();
         }
