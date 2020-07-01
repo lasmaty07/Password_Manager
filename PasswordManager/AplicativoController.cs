@@ -2,6 +2,7 @@
 using PasswordManager.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -54,6 +55,50 @@ namespace PasswordManager
                 }
             }
             return aplicativos;
+        }
+
+        public static bool UpdateAplicativo(Aplicativo aplicativo)
+        {
+            using (var db = new DBContext())
+            {
+                var result = db.Aplicativos.SingleOrDefault(b => b.Id == aplicativo.Id);
+                if (result != null)
+                {
+                    db.Entry(result).CurrentValues.SetValues(aplicativo);
+                    db.SaveChanges();
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+
+        public static bool DeleteAplicativo(Aplicativo aplicativo)
+        {
+            using (var db = new DBContext())
+            {
+                var result = db.Aplicativos.FirstOrDefault(b => b.Id == aplicativo.Id);
+                if (result != null)
+                {
+                    db.Aplicativos.Remove(result);
+                    db.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        public static bool AddAplicativo(Aplicativo aplicativo)
+        {
+            using (var db = new DBContext())
+            {
+                db.Aplicativos.Add(aplicativo);
+                db.SaveChanges();
+                return true;
+            }
         }
     }
 }

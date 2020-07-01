@@ -72,11 +72,17 @@ namespace PasswordManager
                     string new_pass = "";
                     if (Crypto.admin_pass != "" && ShowInputDialog(ref new_pass) == DialogResult.OK && new_pass!= "")
                     {
+                        Aplicativo aplicativo = new Aplicativo();
                         int selectedrowindex = appsDataGridView.SelectedCells[0].RowIndex;
                         DataGridViewRow selectedRow = appsDataGridView.Rows[selectedrowindex];
                         var strDecrypted = Convert.ToString(new_pass);
                         var strEncryptred = PasswordManager.Crypto.Encrypt(strDecrypted, Crypto.admin_pass);
-                        MessageBox.Show(strEncryptred);
+                        aplicativo.Id = (int)selectedRow.Cells["Id"].Value;
+                        aplicativo.Name = Convert.ToString(selectedRow.Cells["Name"].Value);
+                        aplicativo.User = Convert.ToString(selectedRow.Cells["User"].Value);
+                        aplicativo.Env = Convert.ToString(selectedRow.Cells["Env"].Value);
+                        aplicativo.Password = strEncryptred;
+                        PasswordManager.AplicativoController.UpdateAplicativo(aplicativo);
                     }
                 }
                 else
@@ -96,7 +102,14 @@ namespace PasswordManager
             {
                 if (appsDataGridView.SelectedCells.Count > 0)
                 {
-
+                    Aplicativo aplicativo = new Aplicativo();
+                    int selectedrowindex = appsDataGridView.SelectedCells[0].RowIndex;
+                    DataGridViewRow selectedRow = appsDataGridView.Rows[selectedrowindex];
+                    aplicativo.Id = (int)selectedRow.Cells["Id"].Value;
+                    if (MessageBox.Show("Va a eliminar el registro: " + Convert.ToString(selectedRow.Cells["Name"].Value), "Eliminar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        PasswordManager.AplicativoController.DeleteAplicativo(aplicativo);
+                    }
                 }
                 else
                 {

@@ -90,7 +90,7 @@ namespace PasswordManager
                 Name = "control-m",
                 User = "Nachn",
                 Env = "Desa",
-                Password = "testpassword"
+                Password = "z9N5zwfRzyl7Z6MZRDzzPw=="
             });
             context.Set<Aplicativo>().Add(new Aplicativo
             {
@@ -98,7 +98,7 @@ namespace PasswordManager
                 Name = "serena",
                 User = "L0690228",
                 Env = "Prod",
-                Password = "testpasswordprod"
+                Password = "oTTX2wZeK6tngyfTgGCTDg=="
             });
             context.Set<Aplicativo>().Add(new Aplicativo
             {
@@ -106,7 +106,7 @@ namespace PasswordManager
                 Name = "kibana",
                 User = "L0690228",
                 Env = "Prod",
-                Password = "testpasswordprod"
+                Password = "z9N5zwfRzyl7Z6MZRDzzPw=="
             });
 
             context.SaveChanges();
