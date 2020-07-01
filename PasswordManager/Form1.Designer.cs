@@ -35,6 +35,7 @@ namespace PasswordManager
             this.btn_copiar = new System.Windows.Forms.Button();
             this.btn_actualizar = new System.Windows.Forms.Button();
             this.btn_eliminar = new System.Windows.Forms.Button();
+            this.btn_agregar = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -132,6 +133,16 @@ namespace PasswordManager
             this.label3.TabIndex = 2;
             this.label3.Text = "Ambiente";
             // 
+            // button2
+            // 
+            this.btn_agregar.Location = new System.Drawing.Point(503, 183);
+            this.btn_agregar.Name = "btn_agregar";
+            this.btn_agregar.Size = new System.Drawing.Size(89, 34);
+            this.btn_agregar.TabIndex = 0;
+            this.btn_agregar.Text = "Agregar";
+            this.btn_agregar.UseVisualStyleBackColor = true;
+            this.btn_agregar.Click += new System.EventHandler(this.btn_agregar_Click);
+            // 
             // button1
             // 
             /*
@@ -177,6 +188,7 @@ namespace PasswordManager
             this.Controls.Add(this.btn_actualizar);
             this.Controls.Add(this.btn_copiar);
             this.Controls.Add(this.btn_buscar);
+            this.Controls.Add(this.btn_agregar);
             this.Controls.Add(this.appsDataGridView);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -192,6 +204,7 @@ namespace PasswordManager
         private Button btn_copiar;
         private Button btn_actualizar;
         private Button btn_eliminar;
+        private Button btn_agregar;
         private TextBox textBox1;
         private TextBox textBox2;
         private TextBox textBox3;

@@ -106,7 +106,7 @@ namespace PasswordManager
                     int selectedrowindex = appsDataGridView.SelectedCells[0].RowIndex;
                     DataGridViewRow selectedRow = appsDataGridView.Rows[selectedrowindex];
                     aplicativo.Id = (int)selectedRow.Cells["Id"].Value;
-                    if (MessageBox.Show("Va a eliminar el registro: " + Convert.ToString(selectedRow.Cells["Name"].Value), "Eliminar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show("Va a eliminar : " + Convert.ToString(selectedRow.Cells["Name"].Value), "Eliminar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         PasswordManager.AplicativoController.DeleteAplicativo(aplicativo);
                     }
@@ -120,6 +120,31 @@ namespace PasswordManager
             {
                 MessageBox.Show(ex.Message);
             } 
+        }
+        private void btn_agregar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (appsDataGridView.SelectedCells.Count > 0)
+                {
+                    Aplicativo aplicativo = new Aplicativo();
+                    int selectedrowindex = appsDataGridView.SelectedCells[0].RowIndex;
+                    DataGridViewRow selectedRow = appsDataGridView.Rows[selectedrowindex];
+                    aplicativo.Id = (int)selectedRow.Cells["Id"].Value;
+                    if (MessageBox.Show("Va a eliminar : " + Convert.ToString(selectedRow.Cells["Name"].Value), "Eliminar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        PasswordManager.AplicativoController.AddAplicativo(aplicativo);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se seleccionó ningun registro");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private static DialogResult ShowInputDialog(ref string input)
