@@ -83,6 +83,7 @@ namespace PasswordManager
                         aplicativo.Env = Convert.ToString(selectedRow.Cells["Env"].Value);
                         aplicativo.Password = strEncryptred;
                         PasswordManager.AplicativoController.UpdateAplicativo(aplicativo);
+                        this.btn_buscar_Click(sender, e);
                     }
                 }
                 else
@@ -106,9 +107,10 @@ namespace PasswordManager
                     int selectedrowindex = appsDataGridView.SelectedCells[0].RowIndex;
                     DataGridViewRow selectedRow = appsDataGridView.Rows[selectedrowindex];
                     aplicativo.Id = (int)selectedRow.Cells["Id"].Value;
-                    if (MessageBox.Show("Va a eliminar : " + Convert.ToString(selectedRow.Cells["Name"].Value), "Eliminar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show("Se va a eliminar : " + Convert.ToString(selectedRow.Cells["Name"].Value), "Eliminar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         PasswordManager.AplicativoController.DeleteAplicativo(aplicativo);
+                        this.btn_buscar_Click(sender, e);
                     }
                 }
                 else
