@@ -23,6 +23,7 @@ namespace PasswordManager.db
         }
 
         public DbSet<Aplicativo> Aplicativos { get; set; }
+        public DbSet<Config> Config { get; set; }
 
         private void Configure()
         {

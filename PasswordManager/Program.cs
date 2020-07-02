@@ -22,9 +22,13 @@ namespace PasswordManager
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             StartDemoUseFile();
-            if (ShowInputDialog(ref Crypto.admin_pass) == DialogResult.OK)
+            ShowInputDialog(ref Crypto.admin_pass);
+            if (ConfigController.ValidateAdminPassword(Crypto.admin_pass))
             {
                 Application.Run(new Form1());
+            }
+            else { 
+            MessageBox.Show("Contraseña Incorrecta");
             }
         }
 
@@ -107,6 +111,12 @@ namespace PasswordManager
                 User = "L0690228",
                 Env = "Prod",
                 Password = "z9N5zwfRzyl7Z6MZRDzzPw=="
+            });
+
+            context.Set<Config>().Add(new Config
+            {
+                Key = "Pass",
+                Value = "2d6c1b7dd95309834d670a08a4a0e2d5390c3b20ee77b05902b67eed4569a10e"
             });
 
             context.SaveChanges();
