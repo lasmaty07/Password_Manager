@@ -28,7 +28,7 @@ namespace PasswordManager
                 string user = this.textBox2.Text;
                 string env = this.textBox3.Text;
                 List<Aplicativo> apps = PasswordManager.AplicativoController.GetAplicativo(name,user,env);               
-                this.appsDataGridView.DataSource = apps;
+                this.appsDataGridView.DataSource = apps.OrderBy(x => x.Name).ToList();
                 this.appsDataGridView.Columns["Id"].Visible = false;
                 //this.appsDataGridView.Columns["Password"].Visible = false;
             }
