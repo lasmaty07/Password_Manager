@@ -91,9 +91,18 @@ namespace PasswordManager
         {
             using (var db = new DBContext())
             {
-                db.Aplicativos.Add(aplicativo);
-                db.SaveChanges();
-                return true;
+                var result = db.Aplicativos.FirstOrDefault(b => b.Name.ToLower() == aplicativo.Name.ToLower() && 
+                                                                b.User.ToLower() == aplicativo.User.ToLower() && 
+                                                                b.Env.ToLower() == aplicativo.Env.ToLower());
+                if (result == null)
+                {
+                    db.Aplicativos.Add(aplicativo);
+                    db.SaveChanges();
+                    return true;
+                }
+                else {
+                    return false;
+                }
             }
         }
     }

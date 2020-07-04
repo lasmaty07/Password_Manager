@@ -1,4 +1,5 @@
 ﻿using PasswordManager.Model;
+using PasswordManager.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -92,7 +93,7 @@ namespace PasswordManager
                 }
             }
             catch (Exception ex)
-        {
+            {
                 MessageBox.Show(ex.Message);
             }
         }
@@ -127,20 +128,9 @@ namespace PasswordManager
         {
             try
             {
-                if (appsDataGridView.SelectedCells.Count > 0)
+                using (var frm = new AddAppForm())
                 {
-                    Aplicativo aplicativo = new Aplicativo();
-                    int selectedrowindex = appsDataGridView.SelectedCells[0].RowIndex;
-                    DataGridViewRow selectedRow = appsDataGridView.Rows[selectedrowindex];
-                    aplicativo.Id = (int)selectedRow.Cells["Id"].Value;
-                    if (MessageBox.Show("Va a eliminar : " + Convert.ToString(selectedRow.Cells["Name"].Value), "Eliminar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        PasswordManager.AplicativoController.AddAplicativo(aplicativo);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No se seleccionó ningun registro");
+                    frm.ShowDialog();
                 }
             }
             catch (Exception ex)
