@@ -20,6 +20,15 @@ namespace PasswordManager
             InitializeComponent();
         }
 
+        private void textBox_KeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_buscar_Click(this, new EventArgs());
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
         private void btn_buscar_Click(object sender, EventArgs e)
         {
             try 

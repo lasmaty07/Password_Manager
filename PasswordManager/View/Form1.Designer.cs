@@ -50,7 +50,7 @@ namespace PasswordManager
             this.btn_buscar.Location = new System.Drawing.Point(330, 12);
             this.btn_buscar.Name = "btn_buscar";
             this.btn_buscar.Size = new System.Drawing.Size(89, 45);
-            this.btn_buscar.TabIndex = 0;
+            this.btn_buscar.TabIndex = 4;
             this.btn_buscar.Text = "Buscar";
             this.btn_buscar.UseVisualStyleBackColor = true;
             this.btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click);
@@ -60,7 +60,7 @@ namespace PasswordManager
             this.btn_copiar.Location = new System.Drawing.Point(503, 63);
             this.btn_copiar.Name = "btn_copiar";
             this.btn_copiar.Size = new System.Drawing.Size(89, 34);
-            this.btn_copiar.TabIndex = 0;
+            this.btn_copiar.TabIndex = 5;
             this.btn_copiar.Text = "Copiar";
             this.btn_copiar.UseVisualStyleBackColor = true;
             this.btn_copiar.Click += new System.EventHandler(this.btn_copiar_Click);
@@ -70,7 +70,7 @@ namespace PasswordManager
             this.btn_actualizar.Location = new System.Drawing.Point(503, 103);
             this.btn_actualizar.Name = "btn_actualizar";
             this.btn_actualizar.Size = new System.Drawing.Size(89, 34);
-            this.btn_actualizar.TabIndex = 0;
+            this.btn_actualizar.TabIndex = 6;
             this.btn_actualizar.Text = "Actualizar";
             this.btn_actualizar.UseVisualStyleBackColor = true;
             this.btn_actualizar.Click += new System.EventHandler(this.btn_actualizar_Click);
@@ -80,7 +80,7 @@ namespace PasswordManager
             this.btn_eliminar.Location = new System.Drawing.Point(503, 143);
             this.btn_eliminar.Name = "btn_eliminar";
             this.btn_eliminar.Size = new System.Drawing.Size(89, 34);
-            this.btn_eliminar.TabIndex = 0;
+            this.btn_eliminar.TabIndex = 7;
             this.btn_eliminar.Text = "Eliminar";
             this.btn_eliminar.UseVisualStyleBackColor = true;
             this.btn_eliminar.Click += new System.EventHandler(this.btn_eliminar_Click);
@@ -88,23 +88,26 @@ namespace PasswordManager
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(12, 34);
-            this.textBox1.Name = "textBox1";
+            this.textBox1.Name = "app_name";
             this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 1;
+            this.textBox1.TabIndex = 0;
+            this.textBox1.KeyDown += this.textBox_KeyPress;
             // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(118, 34);
-            this.textBox2.Name = "textBox2";
+            this.textBox2.Name = "app_user";
             this.textBox2.Size = new System.Drawing.Size(100, 23);
             this.textBox2.TabIndex = 1;
+            this.textBox2.KeyDown += this.textBox_KeyPress;
             // 
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(224, 34);
-            this.textBox3.Name = "textBox3";
+            this.textBox3.Name = "app_env";
             this.textBox3.Size = new System.Drawing.Size(100, 23);
-            this.textBox3.TabIndex = 1;
+            this.textBox3.TabIndex = 2;
+            this.textBox3.KeyDown += this.textBox_KeyPress;
             // 
             // label1
             // 
@@ -112,7 +115,6 @@ namespace PasswordManager
             this.label1.Location = new System.Drawing.Point(12, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 15);
-            this.label1.TabIndex = 2;
             this.label1.Text = "Aplicativo";
             // 
             // label2
@@ -121,7 +123,6 @@ namespace PasswordManager
             this.label2.Location = new System.Drawing.Point(118, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 15);
-            this.label2.TabIndex = 2;
             this.label2.Text = "Usuario";
             // 
             // label3
@@ -130,7 +131,6 @@ namespace PasswordManager
             this.label3.Location = new System.Drawing.Point(224, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 15);
-            this.label3.TabIndex = 2;
             this.label3.Text = "Ambiente";
             // 
             // button2
@@ -138,7 +138,7 @@ namespace PasswordManager
             this.btn_agregar.Location = new System.Drawing.Point(503, 183);
             this.btn_agregar.Name = "btn_agregar";
             this.btn_agregar.Size = new System.Drawing.Size(89, 34);
-            this.btn_agregar.TabIndex = 0;
+            this.btn_agregar.TabIndex = 8;
             this.btn_agregar.Text = "Agregar";
             this.btn_agregar.UseVisualStyleBackColor = true;
             this.btn_agregar.Click += new System.EventHandler(this.btn_agregar_Click);

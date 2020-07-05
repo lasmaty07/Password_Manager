@@ -117,7 +117,6 @@ namespace PasswordManager.View
             // 
             // AddAppForm
             // 
-            
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(296, 204);
@@ -131,8 +130,8 @@ namespace PasswordManager.View
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_agregar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Name = "AddAppForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddAppForm";
             this.ResumeLayout(false);
             this.PerformLayout();
