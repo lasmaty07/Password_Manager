@@ -19,8 +19,7 @@ namespace PasswordManager
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            StartInitDBFile();
-            ShowInputDialog(ref Crypto.admin_pass);
+            StartInitDBFile();           
             if (ConfigController.ValidateAdminPassword(Crypto.admin_pass))
             {
                 Application.Run(new Password_Manager());
@@ -93,6 +92,7 @@ namespace PasswordManager
                 {
                     if (context.Set<Config>().Count() != 0)
                     {
+                        ShowInputDialog(ref Crypto.admin_pass);
                         return;
                     }
                 }
