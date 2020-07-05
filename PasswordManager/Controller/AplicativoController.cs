@@ -11,47 +11,8 @@ namespace PasswordManager
         public static List<Aplicativo> GetAplicativo(string name, string user, string env)
         {
             List<Aplicativo> aplicativos = new List<Aplicativo> { };
-
-            // TO-DO refactoring de este codigo
-            /*if (name.Length != 0 && user.Length != 0 && env.Length != 0)
-            {
-                using (var db = new DBContext())
-                {
-                    aplicativos = db.Aplicativos.Where(
-                                    t => db.Aplicativos.Any(s => t.Name.ToLower().Contains(name.ToLower()) &&
-                                                                 t.User.ToLower().Contains(user.ToLower()) &&
-                                                                 t.Env.ToLower().Contains(env.ToLower()))
-                                    ).ToList();
-
-                }
-            }
-            else {
-                if (name.Length != 0 && user.Length == 0 && env.Length == 0)
-                {
-                    using (var db = new DBContext())
-                    {
-                        aplicativos = db.Aplicativos.Where(
-                                        t => db.Aplicativos.Any(s => t.Name.ToLower().Contains(name.ToLower()))
-                                        ).ToList();
-
-                    }
-                }
-                else {
-                    if (name.Length != 0 && user.Length != 0 && env.Length == 0)
-                    {
-                        using (var db = new DBContext())
-                        {
-                            aplicativos = db.Aplicativos.Where(
-                                            t => db.Aplicativos.Any(s => t.Name.ToLower().Contains(name.ToLower())) &&
-                                                                        t.User.ToLower().Contains(user.ToLower())
-                                            ).ToList();
-
-                        }
-                    }
-                }
-            }*/
-
             IQueryable<Aplicativo> result ;
+
             using (var db = new DBContext())
             {
                 result = db.Aplicativos;
@@ -69,6 +30,7 @@ namespace PasswordManager
                 }
                 aplicativos = result.ToList();
             }
+
             return aplicativos;
         }
 
