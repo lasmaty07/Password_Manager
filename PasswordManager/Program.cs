@@ -1,12 +1,8 @@
-using Microsoft.Extensions.DependencyInjection;
 using PasswordManager.db;
 using PasswordManager.Model;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Security.Policy;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PasswordManager
@@ -29,11 +25,17 @@ namespace PasswordManager
                 Application.Run(new Password_Manager());
             }
             else { 
-            MessageBox.Show("Contraseña Incorrecta");
+                MessageBox.Show("Contraseña Incorrecta");
             }
         }
 
-        private static string ApplicationVersion = "0.1";
+        public static string GetAppVersion()
+        {
+            var ver = typeof(Program).Assembly.GetName().Version;
+            Console.WriteLine("The version of the currently executing assembly is: {0}", ver);
+
+            return ver.ToString();
+        }
 
         public static DialogResult ShowInputDialog(ref string input)
         {
@@ -91,6 +93,8 @@ namespace PasswordManager
                 return;
             }
 
+
+
             context.Set<Aplicativo>().Add(new Aplicativo
             {
                 Id = 1,
@@ -124,7 +128,7 @@ namespace PasswordManager
             context.Set<Config>().Add(new Config
             {
                 Key = "Version",
-                Value = ApplicationVersion
+                Value = GetAppVersion()
             });
 
             context.SaveChanges();

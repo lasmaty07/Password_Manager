@@ -194,7 +194,8 @@ namespace PasswordManager
             this.Name = "Password Manager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Password Manager";
-            //this.Icon = new Icon(ApplicationIcon);
+            //this.Icon = new Icon("");
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             this.ResumeLayout(false);
             this.PerformLayout();
 

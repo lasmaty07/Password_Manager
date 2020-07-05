@@ -1,5 +1,4 @@
-﻿using System.Xml;
-
+﻿
 namespace PasswordManager.View
 {
     partial class AddAppForm
