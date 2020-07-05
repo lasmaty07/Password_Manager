@@ -24,8 +24,10 @@ namespace PasswordManager
             {
                 Application.Run(new Password_Manager());
             }
-            else { 
-                MessageBox.Show("Contraseña Incorrecta");
+            else {
+                if (Crypto.admin_pass != "") {
+                    MessageBox.Show("Contraseña Incorrecta");
+                }
             }
         }
 
