@@ -44,18 +44,18 @@ namespace PasswordManager.View
         }
 
         private bool validateFields() {
-            if (this.input_app.Text.Trim() != "") {
+            if (this.input_app.Text.Trim() == "") {
                 return false;
             }
-            if (this.input_user.Text.Trim() != "")
+            if (this.input_user.Text.Trim() == "")
             {
                 return false;
             }
-            if (this.input_env.Text.Trim() != "")
+            if (this.input_env.Text.Trim() == "")
             {
                 return false;
             }
-            if (this.input_pass.Text.Trim() != "")
+            if (this.input_pass.Text.Trim() == "")
             {
                 return false;
             }
