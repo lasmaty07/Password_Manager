@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -59,7 +60,8 @@ namespace PasswordManager
                         DataGridViewRow selectedRow = appsDataGridView.Rows[selectedrowindex];
                         var strEncryptred = Convert.ToString(selectedRow.Cells["Password"].Value);
                         var strDecrypted = PasswordManager.Crypto.Decrypt(strEncryptred, Crypto.admin_pass);
-                        MessageBox.Show(strDecrypted); 
+                        //MessageBox.Show(strDecrypted);
+                        ShowTextDialog(strDecrypted);
                     }
                 }
                 else
@@ -187,6 +189,63 @@ namespace PasswordManager
             DialogResult result = inputBox.ShowDialog();
             input = textBox.Text;
             return result;
+        }
+
+
+        private static DialogResult ShowTextDialog(string input)
+        {
+            System.Drawing.Size size = new System.Drawing.Size(200, 70);
+            Form2 textDialog = new Form2();
+
+            textDialog.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            textDialog.ClientSize = size;
+            textDialog.MaximizeBox = false;
+            textDialog.Text = "Contraseña";
+
+            System.Windows.Forms.Label label = new Label();
+            label.Size = new System.Drawing.Size(size.Width - 10, 23);
+            label.Location = new System.Drawing.Point(5, 5);
+            label.Text = input;
+            textDialog.Controls.Add(label);
+
+            Button okButton = new Button();
+            okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            okButton.Name = "copiarButton";
+            okButton.Size = new System.Drawing.Size(75, 23);
+            okButton.Text = "&Copiar";
+            okButton.Location = new System.Drawing.Point(size.Width - 80 - 80, 39);
+            okButton.Click += (sender, e) => { copyToClipboard(sender, e, input); };
+            textDialog.Controls.Add(okButton);
+            
+
+            Button cancelButton = new Button();
+            cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new System.Drawing.Size(75, 23);
+            cancelButton.Text = "&Cerrar";
+            cancelButton.Location = new System.Drawing.Point(size.Width - 80, 39);
+            textDialog.Controls.Add(cancelButton);
+
+            textDialog.AcceptButton = okButton;
+            textDialog.CancelButton = cancelButton;
+            textDialog.StartPosition = FormStartPosition.CenterParent;
+
+            DialogResult result = textDialog.ShowDialog();
+            input = label.Text;
+            return result;
+        }
+
+        private static void copyToClipboard(object sender, EventArgs e, string text)
+        {
+            object obj = text;
+            try
+            {
+                Clipboard.SetDataObject(obj, true, 2, 1);
+            }
+            catch
+            {
+                Clipboard.SetText(text);
+            }
         }
     }
 }
