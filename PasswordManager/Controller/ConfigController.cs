@@ -31,5 +31,29 @@ namespace PasswordManager
             return result;
         }
 
+        public static bool CreateInitConfig(string admin_pass,string version)
+        {
+            var result = false;
+            var hashedPassword = Crypto.ComputeSha256Hash(admin_pass);
+
+            Config config = new Config();
+
+            config.Key = "Pass";
+            config.Value = hashedPassword;
+
+            using (var db = new DBContext())
+            {
+                db.Config.Add(config);
+                db.Set<Config>().Add(new Config
+                {
+                    Key = "Version",
+                    Value = version
+                });
+                db.SaveChanges();
+                result = true;
+            }
+            return result;
+        }
+
     }
 }

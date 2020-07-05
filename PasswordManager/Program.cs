@@ -4,6 +4,7 @@ using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace PasswordManager
 {
@@ -18,7 +19,7 @@ namespace PasswordManager
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            StartDemoUseFile();
+            StartInitDBFile();
             ShowInputDialog(ref Crypto.admin_pass);
             if (ConfigController.ValidateAdminPassword(Crypto.admin_pass))
             {
@@ -32,8 +33,6 @@ namespace PasswordManager
         public static string GetAppVersion()
         {
             var ver = typeof(Program).Assembly.GetName().Version;
-            Console.WriteLine("The version of the currently executing assembly is: {0}", ver);
-
             return ver.ToString();
         }
 
@@ -78,12 +77,34 @@ namespace PasswordManager
             return result;
         }
 
-        private static void StartDemoUseFile()
+        private static void StartInitDBFile()
         {
-            using (var context = new DBContext())
+            bool demo = false;
+
+            if (demo)
             {
-                CreateAndSeedDatabase(context);
+                using (var context = new DBContext())
+                {
+                    CreateAndSeedDatabase(context);
+                }
             }
+            else {
+                using (var context = new DBContext())
+                {
+                    if (context.Set<Config>().Count() != 0)
+                    {
+                        return;
+                    }
+                }
+                CreateInitialDatabase();
+            }
+        }
+
+        private static void CreateInitialDatabase() {
+
+            MessageBox.Show("No se encontró base de datos, ingresar contraseña maestra (no la olvides)");
+            ShowInputDialog(ref Crypto.admin_pass);
+            ConfigController.CreateInitConfig(Crypto.admin_pass, GetAppVersion());
         }
 
         private static void CreateAndSeedDatabase(DbContext context)
@@ -92,9 +113,7 @@ namespace PasswordManager
             {
                 return;
             }
-
-
-
+            
             context.Set<Aplicativo>().Add(new Aplicativo
             {
                 Id = 1,
@@ -130,7 +149,8 @@ namespace PasswordManager
                 Key = "Version",
                 Value = GetAppVersion()
             });
-
+            
+           
             context.SaveChanges();
         }
 
