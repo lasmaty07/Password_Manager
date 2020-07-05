@@ -13,7 +13,7 @@ Un simple programa para almacenar las contraseñas de forma local y segura
 
 ## Proximas mejoras.
 
-- Pemitir cambiar la contraseñas maestra
+- Pemitir cambiar la contraseña maestra
 - Agregar la importacion por lotes de contraseña
 - Mejorar el copiado al portapapeles, que funciona de forma esporadica
 - Mejorar UI al momento de crear nueva base
