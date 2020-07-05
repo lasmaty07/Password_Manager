@@ -7,13 +7,13 @@ using System.Linq;
 namespace PasswordManager
 {
     class AplicativoController
-    {      
-        public static List<Aplicativo> GetAplicativo(string name,string user,string env)
+    {
+        public static List<Aplicativo> GetAplicativo(string name, string user, string env)
         {
-            List<Aplicativo> aplicativos = new List<Aplicativo> { } ;
+            List<Aplicativo> aplicativos = new List<Aplicativo> { };
 
             // TO-DO refactoring de este codigo
-            if (name.Length != 0  && user.Length != 0 && env.Length != 0)
+            /*if (name.Length != 0 && user.Length != 0 && env.Length != 0)
             {
                 using (var db = new DBContext())
                 {
@@ -22,7 +22,7 @@ namespace PasswordManager
                                                                  t.User.ToLower().Contains(user.ToLower()) &&
                                                                  t.Env.ToLower().Contains(env.ToLower()))
                                     ).ToList();
-                    
+
                 }
             }
             else {
@@ -37,7 +37,7 @@ namespace PasswordManager
                     }
                 }
                 else {
-                    if (name.Length != 0 && user.Length != 0 && env.Length == 0) 
+                    if (name.Length != 0 && user.Length != 0 && env.Length == 0)
                     {
                         using (var db = new DBContext())
                         {
@@ -49,6 +49,25 @@ namespace PasswordManager
                         }
                     }
                 }
+            }*/
+
+            IQueryable<Aplicativo> result ;
+            using (var db = new DBContext())
+            {
+                result = db.Aplicativos;
+                if (!string.IsNullOrEmpty(name))
+                {
+                    result = result.Where(t => t.Name.ToLower().Contains(name.ToLower()));
+                }
+                if (!string.IsNullOrEmpty(user))
+                {
+                    result = result.Where(t => t.User.ToLower().Contains(user.ToLower()));
+                }
+                if (!string.IsNullOrEmpty(env))
+                {
+                    result = result.Where(t => t.Env.ToLower().Contains(env.ToLower()));
+                }
+                aplicativos = result.ToList();
             }
             return aplicativos;
         }
