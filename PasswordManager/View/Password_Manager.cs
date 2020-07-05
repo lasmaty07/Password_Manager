@@ -216,7 +216,6 @@ namespace PasswordManager
             okButton.Location = new System.Drawing.Point(size.Width - 80 - 80, 39);
             okButton.Click += (sender, e) => { copyToClipboard(sender, e, input); };
             textDialog.Controls.Add(okButton);
-            
 
             Button cancelButton = new Button();
             cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
