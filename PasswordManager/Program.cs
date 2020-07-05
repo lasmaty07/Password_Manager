@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -25,12 +26,14 @@ namespace PasswordManager
             ShowInputDialog(ref Crypto.admin_pass);
             if (ConfigController.ValidateAdminPassword(Crypto.admin_pass))
             {
-                Application.Run(new Form1());
+                Application.Run(new Password_Manager());
             }
             else { 
             MessageBox.Show("Contraseña Incorrecta");
             }
         }
+
+        private static string ApplicationVersion = "0.1";
 
         public static DialogResult ShowInputDialog(ref string input)
         {
@@ -117,6 +120,11 @@ namespace PasswordManager
             {
                 Key = "Pass",
                 Value = "2d6c1b7dd95309834d670a08a4a0e2d5390c3b20ee77b05902b67eed4569a10e"
+            });
+            context.Set<Config>().Add(new Config
+            {
+                Key = "Version",
+                Value = ApplicationVersion
             });
 
             context.SaveChanges();

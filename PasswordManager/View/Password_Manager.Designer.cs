@@ -1,9 +1,10 @@
 ﻿using System.Drawing;
+using System.Reflection.Metadata;
 using System.Windows.Forms;
 
 namespace PasswordManager
 {
-    partial class Form1
+    partial class Password_Manager
     {
         /// <summary>
         ///  Required designer variable.
@@ -190,9 +191,10 @@ namespace PasswordManager
             this.Controls.Add(this.btn_buscar);
             this.Controls.Add(this.btn_agregar);
             this.Controls.Add(this.appsDataGridView);
-            this.Name = "Form1";
+            this.Name = "Password Manager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Password Manager";
+            //this.Icon = new Icon(ApplicationIcon);
             this.ResumeLayout(false);
             this.PerformLayout();
 

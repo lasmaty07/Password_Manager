@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace PasswordManager
 {
-    public partial class Form1 : Form
+    public partial class Password_Manager : Form
     {
-        public Form1()
+        public Password_Manager()
         {
             
             InitializeComponent();
